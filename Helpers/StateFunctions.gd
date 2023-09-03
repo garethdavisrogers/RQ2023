@@ -12,6 +12,7 @@ func state_defend(node):
 	node.StateManager.PhysicsLoops.specialty_movement_loop(node)
 
 func state_idle(node):
+	node.StateManager.reset_attack_indices(node)
 	node.is_dodging = false
 	node.can_counter = false
 	if(node.speed > 200):

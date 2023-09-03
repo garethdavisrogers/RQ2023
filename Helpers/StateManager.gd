@@ -5,12 +5,14 @@ const AnimationManagerLoad = preload("res://Helpers/AnimationManager.gd")
 const HitBoxManagerLoad = preload("res://Helpers/HitBoxManager.gd")
 const TimerManagerLoad = preload("res://Helpers/TimerManager.gd")
 const ControlsManagerLoad = preload("res://Helpers/ControlsManager.gd")
+const EnemyFunctionsLoad = preload("res://Helpers/EnemyFunctions.gd")
 var StateFunctions = StateFunctionsLoad.new()
 var PhysicsLoops = PhysicsLoopsLoad.new()
 var AnimationManager = AnimationManagerLoad.new()
 var HitBoxManager = HitBoxManagerLoad.new()
 var TimerManager = TimerManagerLoad.new()
 var ControlsManager = ControlsManagerLoad.new()
+var EnemyFunctions = EnemyFunctionsLoad.new()
 
 enum states {
 	IDLE,
@@ -29,17 +31,7 @@ enum states {
 func state_machine(node, s):
 	if(node.state != s):
 		node.state = s
-	
-	if(s != states.DEFEND):
-		node.is_dodging = false
-		node.countering = false
-		if(s != states.ATTACK):
-			node.cooling_down = false
-			node.even = false
-			node.odd = false
-			if(node.state != states.STAGGER):
-				reset_attack_indices(node)
-				
+
 func anim_switch(node, new_anim):
 	if(node and node.anim.current_animation != new_anim):
 		node.anim.play(new_anim)
@@ -63,9 +55,11 @@ func get_knockdir(node, c):
 	return c.global_position.direction_to(pos)
 
 func nullify_knockdir(node):
-	if((node.state != states.STAGGER and node.state != states.KNOCKDOWN) or node.is_dodging):
+	if(node.state != states.STAGGER and node.state != states.KNOCKDOWN):
 		node.knockdir = null
-						
+		if(node.is_in_group('player')):
+			ControlsManager.controls_loop(node)
+			
 func is_even(num):
 	if(num % 2 == 0):
 		return true
@@ -122,7 +116,7 @@ func numbered_animation_iterator(node, anim_name):
 	for i in range(1, 5):
 		if(anim_name == str('death', i)):
 			node.queue_free()
-		elif(anim_name == str('lite_attack', i) or anim_name == str('heavy_attack', i)):
+		elif(anim_name == str('liteattack', i) or anim_name == str('heavyattack', i)):
 			node.cooling_down = false
 			if(node.is_in_group('player')):
 				node.StateManager.state_machine(node, node.states.IDLE)
@@ -131,13 +125,10 @@ func numbered_animation_iterator(node, anim_name):
 				node.StateManager.increment_enemy_attack_index(node, 'lite')
 				break
 		elif(anim_name == str('stagger', i)):
-			if(node.is_in_group('enemy')):
-				node.can_counter = true
-				node.counter_timer.start()
 			node.StateManager.state_machine(node, node.states.IDLE)
 			break
 
-func non_interuptable(node):
+func special_non_interuptable(node):
 	if(node.recovering or node.throwing or node.dashing):
 		return true
 	return false

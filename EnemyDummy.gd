@@ -16,7 +16,7 @@ func _physics_process(delta):
 	if(StateManager.get_is_dead(health)):
 		StateManager.state_machine(SELF, states.DEAD)
 	if(state != states.DEAD):
-		if(not StateManager.non_interuptable(SELF)):
+		if(not StateManager.special_non_interuptable(SELF)):
 			convert_green_indices()
 			StateManager.set_last_direction(SELF)
 			if(state != states.CLINCHED):
@@ -56,19 +56,13 @@ func _physics_process(delta):
 		states.DEAD:
 			StateManager.StateFunctions.state_dead(SELF)
 		states.SEEK:
-			state_seek()
+			StateManager.EnemyFunctions.state_seek(SELF)
 		states.ATTACK:
 			StateManager.StateFunctions.state_attack(SELF)
 		states.RECOVER:
 			StateManager.StateFunctions.state_recover(SELF)
 		states.IDLE:
 			StateManager.StateFunctions.state_idle(SELF)
-
-func state_seek():
-	StateManager.init_speed(speed)
-	StateManager.accelerate(SELF)
-	movedir = global_position.direction_to(player_location)
-	StateManager.anim_switch(SELF, 'walk')
 
 func get_players_in_detect_range():
 	var bodies = detect_radius.get_overlapping_bodies()

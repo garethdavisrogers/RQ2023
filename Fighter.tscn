@@ -4,8 +4,6 @@
 [ext_resource path="res://Fighter.gd" type="Script" id=2]
 
 [node name="Fighter" type="KinematicBody2D"]
-collision_layer = 3
-collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -69,14 +67,9 @@ one_shot = true
 [node name="KnockdownTimer" type="Timer" parent="."]
 wait_time = 1.2
 one_shot = true
-
-[node name="CounterTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
 [connection signal="area_entered" from="Sprite/HitBox" to="." method="_on_HitBox_area_entered"]
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 [connection signal="timeout" from="SlipTimer" to="." method="_on_SlipTimer_timeout"]
 [connection signal="timeout" from="ClinchTimer" to="." method="_on_ClinchTimer_timeout"]
 [connection signal="timeout" from="ThrowTimer" to="." method="_on_ThrowTimer_timeout"]
 [connection signal="timeout" from="KnockdownTimer" to="." method="_on_KnockdownTimer_timeout"]
-[connection signal="timeout" from="CounterTimer" to="." method="_on_CounterTimer_timeout"]

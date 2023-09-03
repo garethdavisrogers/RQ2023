@@ -1373,7 +1373,7 @@ tracks/6/keys = {
 }
 
 [sub_resource type="Animation" id=19]
-length = 0.7
+length = 0.4
 step = 0.15
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -1545,7 +1545,7 @@ tracks/13/keys = {
 }
 
 [sub_resource type="Animation" id=20]
-length = 0.7
+length = 0.4
 step = 0.15
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -1705,7 +1705,7 @@ tracks/12/keys = {
 }
 
 [sub_resource type="Animation" id=21]
-length = 0.7
+length = 0.4
 step = 0.15
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -1853,7 +1853,7 @@ tracks/11/keys = {
 }
 
 [sub_resource type="Animation" id=22]
-length = 0.7
+length = 0.5
 step = 0.15
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -3602,7 +3602,7 @@ disabled = true
 collision_layer = 8192
 
 [node name="CollisionShape2D" parent="Sprite/HitCollider" index="0"]
-position = Vector2( 59, -2 )
+position = Vector2( 60, 32 )
 shape = SubResource( 2 )
 disabled = true
 
@@ -3611,7 +3611,7 @@ collision_layer = 32768
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="Sprite/CounterBubble" index="0"]
-position = Vector2( 45, 40 )
+position = Vector2( 55, 45 )
 shape = SubResource( 3 )
 disabled = true
 

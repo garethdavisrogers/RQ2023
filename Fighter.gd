@@ -9,7 +9,7 @@ var movedir = Vector2()
 var knockdir = null
 
 var speed = 1
-var max_speed = 400
+var max_speed = 300
 var health = 100
 var death_version = 1
 var last_direction_x = -1
@@ -21,6 +21,7 @@ var recovering = false
 var is_dodging = false
 var cooling_down = false
 var can_counter = false
+var blocking = false
 
 var odd = false
 var even = false
@@ -46,7 +47,6 @@ onready var throw_timer = $ThrowTimer
 onready var knockdown_timer = $KnockdownTimer
 onready var clinch_point = $Sprite/ClinchPoint
 onready var damage_numbers = $DamageNumbers
-onready var counter_timer = $CounterTimer
 
 var lite_index = 1
 var heavy_index = 1
@@ -72,7 +72,3 @@ func _on_KnockdownTimer_timeout():
 	
 func _on_anim_animation_finished(anim_name):
 	StateManager.AnimationManager.animation_finished(SELF, anim_name)
-
-func _on_CounterTimer_timeout():
-	can_counter = false
-	StateManager.reset_attack_indices(SELF)
