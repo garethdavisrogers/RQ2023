@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/damage_numbers.png" type="Texture" id=1]
+[ext_resource path="res://Fighter.gd" type="Script" id=2]
+
+[node name="Fighter" type="KinematicBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+z_index = 4
+hframes = 43
+
+[node name="HitBox" type="Area2D" parent="Sprite"]
+collision_layer = 1024
+collision_mask = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/HitBox"]
+
+[node name="HitCollider" type="Area2D" parent="Sprite"]
+collision_layer = 2048
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/HitCollider"]
+
+[node name="CounterBubble" type="Area2D" parent="Sprite"]
+collision_layer = 4096
+collision_mask = 2053
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/CounterBubble"]
+
+[node name="DetectRadius" type="Area2D" parent="Sprite"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/DetectRadius"]
+
+[node name="ClinchPoint" type="Position2D" parent="Sprite"]
+
+[node name="Overlay" type="Sprite" parent="Sprite"]
+
+[node name="BlastSpawn" type="Position2D" parent="Sprite"]
+
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
+
+[node name="DamageNumbers" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+hframes = 4
+
+[node name="anim" type="AnimationPlayer" parent="."]
+
+[node name="Shadow" type="Sprite" parent="."]
+
+[node name="SlipTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="ClinchTimer" type="Timer" parent="."]
+wait_time = 2.4
+one_shot = true
+
+[node name="ThrowTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="KnockdownTimer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[node name="CounterTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+[connection signal="area_entered" from="Sprite/HitBox" to="." method="_on_HitBox_area_entered"]
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+[connection signal="timeout" from="SlipTimer" to="." method="_on_SlipTimer_timeout"]
+[connection signal="timeout" from="ClinchTimer" to="." method="_on_ClinchTimer_timeout"]
+[connection signal="timeout" from="ThrowTimer" to="." method="_on_ThrowTimer_timeout"]
+[connection signal="timeout" from="KnockdownTimer" to="." method="_on_KnockdownTimer_timeout"]
+[connection signal="timeout" from="CounterTimer" to="." method="_on_CounterTimer_timeout"]

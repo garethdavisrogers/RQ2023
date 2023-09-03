@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://KraxEnforcer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/green_krax_enforcer.png" type="Texture" id=2]
+[ext_resource path="res://GreenKraxEnforcer.gd" type="Script" id=3]
+
+[node name="GreenKraxEnforcer" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, 0 )
+texture = ExtResource( 2 )
+hframes = 48
+frame = 20
+
+[node name="CollisionShape2D" parent="Sprite/HitBox" index="0"]
+position = Vector2( 10, 10 )
+disabled = true
+
+[node name="CollisionShape2D" parent="Sprite/HitCollider" index="0"]
+position = Vector2( 10.369, -34.5491 )
+
+[node name="CollisionShape2D" parent="Sprite/CounterBubble" index="0"]
+position = Vector2( 45, 15 )
+disabled = true
+
+[node name="BodyCollider" parent="." index="1"]
+position = Vector2( 4, 60 )
