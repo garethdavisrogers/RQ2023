@@ -7,6 +7,10 @@ func state_attack(node):
 func state_recover(node):
 	node.StateManager.anim_switch(node, 'recover')
 
+func state_grab(node):
+	if(not node.clinched_opponent):
+		node.StateManager.anim_switch(node, 'grab')
+	
 func state_defend(node):
 	node.StateManager.decelerate(node)
 	node.StateManager.PhysicsLoops.specialty_movement_loop(node)

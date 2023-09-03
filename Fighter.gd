@@ -21,7 +21,6 @@ var recovering = false
 var is_dodging = false
 var cooling_down = false
 var can_counter = false
-var blocking = false
 
 var odd = false
 var even = false

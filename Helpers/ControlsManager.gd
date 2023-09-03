@@ -124,6 +124,6 @@ func attack_and_movement_controls_loop(node):
 			node.StateManager.ControlsManager.handle_melee_attack_input(node, 'lite')
 			node.StateManager.state_machine(node, node.states.ATTACK)
 		
-	elif(Input.is_action_just_pressed("grab")):
+	elif(Input.is_action_just_pressed("grab") and node.state != node.states.GRAB):
 		node.StateManager.anim_switch(node, 'grab')
 		node.StateManager.state_machine(node, node.states.GRAB)

@@ -23,9 +23,9 @@ func _physics_process(delta):
 			StateManager.PhysicsLoops.specialty_movement_loop(SELF)
 		else:
 			StateManager.set_last_direction(SELF)
-			StateManager.nullify_knockdir(SELF)
 			if(state != states.CLINCHED):
 				pummeled = false
+				StateManager.nullify_knockdir(SELF)
 				if(state != states.GRAB):
 					StateManager.release_opponent(SELF)
 					if(state != states.DEFEND):
@@ -33,16 +33,16 @@ func _physics_process(delta):
 						StateManager.PhysicsLoops.spritedir_loop(SELF)
 			
 	match state:
-			states.DEAD:
-				StateManager.StateFunctions.state_dead(SELF)
-			states.RECOVER:
-				StateManager.StateFunctions.state_recover(SELF)
-			states.ATTACK:
-				StateManager.StateFunctions.state_attack(SELF)
-			states.IDLE:
-				StateManager.StateFunctions.state_idle(SELF)
-			states.DEFEND:
-				StateManager.StateFunctions.state_defend(SELF)
+		states.DEAD:
+			StateManager.StateFunctions.state_dead(SELF)
+		states.RECOVER:
+			StateManager.StateFunctions.state_recover(SELF)
+		states.ATTACK:
+			StateManager.StateFunctions.state_attack(SELF)
+		states.IDLE:
+			StateManager.StateFunctions.state_idle(SELF)
+		states.DEFEND:
+			StateManager.StateFunctions.state_defend(SELF)
 
 	
 func _on_HitCollider_area_entered(area):
