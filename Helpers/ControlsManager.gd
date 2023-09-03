@@ -14,4 +14,3 @@ func handle_melee_attack_input(node, type):
 			node.even = true
 		node.can_follow_up = false
 		node.combo_timer.start()
-	node.StateManager.set_slipdir(node)

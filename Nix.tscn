@@ -7,7 +7,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 12.0
-height = 45.0
+height = 30.0
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -1688,7 +1688,7 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id=16]
 length = 0.7
-step = 0.15
+step = 0.55
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -1708,10 +1708,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.15 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.55 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ true, false, true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite/HitCollider/CollisionShape2D:position")
@@ -4421,17 +4421,17 @@ collision_mask = 32779
 script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2( 0, -45 )
+position = Vector2( 3, -44 )
 z_index = 2
 texture = ExtResource( 2 )
 hframes = 64
-frame = 52
+frame = 13
 
 [node name="HitBox" parent="Sprite" index="0"]
 collision_mask = 8192
 
 [node name="CollisionShape2D" parent="Sprite/HitBox" index="0"]
-position = Vector2( -10, 0 )
+position = Vector2( -12, -5 )
 shape = SubResource( 1 )
 
 [node name="HitCollider" parent="Sprite" index="1"]
@@ -4439,7 +4439,7 @@ collision_layer = 4096
 collision_mask = 8192
 
 [node name="CollisionShape2D" parent="Sprite/HitCollider" index="0"]
-position = Vector2( 40, -10 )
+position = Vector2( 35, -5 )
 shape = SubResource( 2 )
 disabled = true
 
@@ -4467,7 +4467,7 @@ hframes = 64
 frame = 56
 
 [node name="BodyCollider" parent="." index="1"]
-position = Vector2( 5, -25 )
+position = Vector2( -8, -15 )
 shape = SubResource( 5 )
 
 [node name="DamageNumbers" parent="." index="2"]
@@ -4506,7 +4506,7 @@ anims/throw = SubResource( 31 )
 anims/walk = SubResource( 32 )
 
 [node name="Shadow" parent="." index="4"]
-position = Vector2( 10, 0 )
+position = Vector2( -5, 0 )
 texture = ExtResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]

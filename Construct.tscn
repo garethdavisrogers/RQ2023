@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/construct.png" type="Texture" id=1]
 [ext_resource path="res://Nix.tscn" type="PackedScene" id=2]
-[ext_resource path="res://KraxEnforcer.tscn" type="PackedScene" id=3]
 
 [node name="Construct" type="Node2D"]
 
@@ -14,6 +13,3 @@ centered = false
 
 [node name="Nix" parent="Sprite/YSort" instance=ExtResource( 2 )]
 position = Vector2( 294.32, 369.481 )
-
-[node name="KraxEnforcer" parent="Sprite/YSort" instance=ExtResource( 3 )]
-position = Vector2( 490.917, 370.076 )
