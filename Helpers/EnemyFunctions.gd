@@ -27,6 +27,7 @@ func get_in_headbutt_range(node):
 	return false
 
 func state_seek(node):
+	node.StateManager.reset_attack_indices(node)
 	node.cooling_down = false
 	node.speed = 80
 	node.movedir = node.global_position.direction_to(node.player_location)

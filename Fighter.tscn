@@ -53,7 +53,7 @@ hframes = 4
 [node name="Shadow" type="Sprite" parent="."]
 
 [node name="SlipTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.25
 one_shot = true
 
 [node name="ClinchTimer" type="Timer" parent="."]

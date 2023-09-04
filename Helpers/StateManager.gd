@@ -100,6 +100,7 @@ func release_opponent(node):
 
 func increment_enemy_attack_index(node,attack_type):
 	if(node.lite_index == 4 or node.heavy_index == 3):
+		node.cooling_down = true
 		state_machine(node, states.SEEK)
 	elif(attack_type == 'lite'):
 		node.lite_index = min(node.lite_index + 1, 4)
@@ -131,7 +132,7 @@ func special_non_interuptable(node):
 				
 func init_node(node):
 	node.state = node.states.IDLE
-	node.slip_timer.wait_time = 0.2
+	node.slip_timer.wait_time = 0.25
 	node.slip_timer.one_shot = true
 	node.clinch_timer.wait_time = 2.4
 	node.clinch_timer.one_shot = true
