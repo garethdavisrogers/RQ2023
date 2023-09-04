@@ -1,6 +1,8 @@
 func animation_finished(node, anim_name):
 	if(anim_name != 'idle' and anim_name != 'walk'):
 		node.StateManager.numbered_animation_iterator(node, anim_name)
+	if(anim_name == 'dashattack'):
+		node.StateManager.anim_switch(node, 'land')
 	if(anim_name == 'land'):
 		node.dashing = false
 		node.StateManager.state_machine(node, node.states.IDLE)

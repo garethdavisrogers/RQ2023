@@ -13,7 +13,7 @@ height = 40.0
 radius = 15.0
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 25, 35 )
+extents = Vector2( 35, 12 )
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 700.0
@@ -3588,21 +3588,21 @@ position = Vector2( 0, -78 )
 z_index = 2
 texture = ExtResource( 3 )
 hframes = 73
-frame = 1
+frame = 6
 
 [node name="HitBox" parent="Sprite" index="0"]
 collision_layer = 2048
 collision_mask = 4096
 
 [node name="CollisionShape2D" parent="Sprite/HitBox" index="0"]
+position = Vector2( 5, 0 )
 shape = SubResource( 1 )
-disabled = true
 
 [node name="HitCollider" parent="Sprite" index="1"]
 collision_layer = 8192
 
 [node name="CollisionShape2D" parent="Sprite/HitCollider" index="0"]
-position = Vector2( 60, 32 )
+position = Vector2( 55, 16 )
 shape = SubResource( 2 )
 disabled = true
 
@@ -3611,9 +3611,8 @@ collision_layer = 32768
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="Sprite/CounterBubble" index="0"]
-position = Vector2( 55, 45 )
+position = Vector2( 32, 40 )
 shape = SubResource( 3 )
-disabled = true
 
 [node name="DetectRadius" parent="Sprite" index="3"]
 collision_layer = 65536
@@ -3641,7 +3640,7 @@ position = Vector2( 20, -40 )
 shape = SubResource( 6 )
 
 [node name="BodyCollider" parent="." index="1"]
-position = Vector2( 10, -35 )
+position = Vector2( 4, -20 )
 shape = SubResource( 7 )
 
 [node name="DamageNumbers" parent="." index="2"]
@@ -3680,6 +3679,6 @@ anims/thrown = SubResource( 33 )
 anims/walk = SubResource( 34 )
 
 [node name="Shadow" parent="." index="4"]
-position = Vector2( 8, 0 )
+position = Vector2( 5, 0 )
 scale = Vector2( 2.5, 2 )
 texture = ExtResource( 4 )

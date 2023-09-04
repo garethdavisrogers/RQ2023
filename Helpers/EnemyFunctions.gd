@@ -28,8 +28,7 @@ func get_in_headbutt_range(node):
 
 func state_seek(node):
 	node.cooling_down = false
-	node.StateManager.init_speed(node.speed)
-	node.StateManager.accelerate(node)
+	node.speed = 80
 	node.movedir = node.global_position.direction_to(node.player_location)
 	node.StateManager.anim_switch(node, 'walk')
 
@@ -40,23 +39,23 @@ func get_attack_ranges(node):
 			
 	if(in_melee_range and node.state != node.states.DEFEND):
 		if(not node.cooling_down):
-			node.StateManager.state_machine(node, node.states.ATTACK)
 			node.cooling_down = true
 			node.StateManager.set_slipdir(node)
 			node.slip_timer.start()
 			node.StateManager.anim_switch(node, str('liteattack',node.lite_index))
+			node.StateManager.state_machine(node, node.states.ATTACK)
 		return true
 	elif(in_stomp_range and node.state != node.states.DEFEND):
 		if(not node.cooling_down):
-			node.StateManager.state_machine(node, node.states.ATTACK)
 			node.cooling_down = true
 			node.StateManager.anim_switch(node, 'stomp')
+			node.StateManager.state_machine(node, node.states.ATTACK)
 		return true
 	elif(in_headbutt_range and node.state != node.states.DEFEND):
 		if(not node.cooling_down):
-			node.StateManager.state_machine(node, node.states.ATTACK)
 			node.cooling_down = true
 			node.StateManager.anim_switch(node, 'headbutt')
+			node.StateManager.state_machine(node, node.states.ATTACK)
 		return true
 	return false
 		

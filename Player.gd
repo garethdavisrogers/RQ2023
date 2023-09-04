@@ -11,7 +11,7 @@ func _ready():
 	self.add_to_group('player')
 	health = 500
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	if(StateManager.get_is_dead(health)):
 		StateManager.state_machine(SELF, states.DEAD)
@@ -23,14 +23,14 @@ func _physics_process(delta):
 			StateManager.PhysicsLoops.specialty_movement_loop(SELF)
 		else:
 			StateManager.set_last_direction(SELF)
-			if(state != states.CLINCHED):
-				pummeled = false
-				StateManager.nullify_knockdir(SELF)
+			StateManager.PhysicsLoops.check_run_physics_loop(SELF)
+			if(state != states.STAGGER and state != states.KNOCKDOWN):
+				knockdir = null
+				StateManager.ControlsManager.controls_loop(SELF)
+				if(state != states.CLINCHED):
+					pummeled = false
 				if(state != states.GRAB):
 					StateManager.release_opponent(SELF)
-					if(state != states.DEFEND):
-						StateManager.PhysicsLoops.movement_loop(SELF)
-						StateManager.PhysicsLoops.spritedir_loop(SELF)
 			
 	match state:
 		states.DEAD:

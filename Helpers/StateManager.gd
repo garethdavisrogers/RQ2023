@@ -53,12 +53,6 @@ func decelerate(node, min_speed = 0):
 func get_knockdir(node, c):
 	var pos = node.get_global_position()
 	return c.global_position.direction_to(pos)
-
-func nullify_knockdir(node):
-	if(node.state != states.STAGGER and node.state != states.KNOCKDOWN):
-		node.knockdir = null
-		if(node.is_in_group('player')):
-			ControlsManager.controls_loop(node)
 			
 func is_even(num):
 	if(num % 2 == 0):
@@ -105,13 +99,15 @@ func release_opponent(node):
 		node.clinched_opponent = null
 
 func increment_enemy_attack_index(node,attack_type):
-	if(attack_type == 'lite'):
+	if(node.lite_index == 4 or node.heavy_index == 3):
+		state_machine(node, states.SEEK)
+	elif(attack_type == 'lite'):
 		node.lite_index = min(node.lite_index + 1, 4)
 		node.attack_index = node.lite_index
 	elif(attack_type == 'heavy'):
 		node.heavy_index = min(node.lite_index + 1, 3)
 		node.attack_index = node.heavy_index
-
+		
 func numbered_animation_iterator(node, anim_name):
 	for i in range(1, 5):
 		if(anim_name == str('death', i)):

@@ -4,8 +4,8 @@ func movement_loop(node):
 		if(node.state == node.states.KNOCKDOWN):
 			motion.x = node.knockdir.x * 300
 		else:
-			motion.x = node.knockdir.x * 60
-		motion.y = node.knockdir.y * 5
+			motion.x = node.knockdir.x * 30
+		motion.y = node.knockdir.y * 2
 	else:
 		motion.x = node.last_direction_x * node.speed
 		motion.y = node.movedir.y * 30
@@ -30,3 +30,8 @@ func specialty_movement_loop(node):
 		node.global_position.y += 1.5
 	elif(node.anim.current_animation == 'alucarddodge'):
 		node.global_position.x += node.last_direction_x * -6
+
+func check_run_physics_loop(node):
+	if(node.state != node.states.DEFEND and node.state != node.states.CLINCHED and node.state != node.states.GRAB):
+		movement_loop(node)
+		spritedir_loop(node)
