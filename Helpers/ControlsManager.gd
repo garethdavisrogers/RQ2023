@@ -4,16 +4,20 @@ func handle_melee_attack_input(node, type):
 		node.lite_index = min(node.lite_index + 1, 4)
 	elif(type == 'heavy'):
 		node.attack_index = node.heavy_index
-		node.heavy_index = min(node.lite_index + 1, 3)
+		node.heavy_index = min(node.heavy_index + 1, 3)
 
 	if(node.attack_index == 1):
 		node.can_follow_up = true
 	else:
+		node.can_follow_up = false
+		node.combo_timer.start()
 		if(node.attack_index == 2):
 			node.odd = false
 			node.even = true
-		node.can_follow_up = false
-		node.combo_timer.start()
+		if(node.attack_index == 3):
+			print(node.attack_index)
+		if(node.attack_index == 4):
+			print(node.attack_index)
 
 func controls_loop(node):
 	var clinched = node.state == node.states.CLINCHED
@@ -88,7 +92,7 @@ func defense_controls_loops(node):
 		node.StateManager.anim_switch(node, 'evendodge')
 		node.is_dodging = true
 		node.slip_timer.start()
-		if(node.can_counter and enemy_attack_index % 2 == 0):
+		if(node.can_counter and enemy_attack_index % 2):
 			if(Input.is_action_just_pressed("liteattack")):
 				node.is_dodging = false
 				node.countering = true
@@ -118,10 +122,10 @@ func attack_and_movement_controls_loop(node):
 			node.dashing = true
 			node.StateManager.state_machine(node, node.states.ATTACK)
 		elif(node.state == node.states.IDLE or node.can_follow_up):
-			node.StateManager.anim_switch(node, str('liteattack',node.lite_index))
+			node.StateManager.anim_switch(node, str('liteattack', node.lite_index))
 			node.StateManager.set_slipdir(node)
 			node.slip_timer.start()
-			node.StateManager.ControlsManager.handle_melee_attack_input(node, 'lite')
+			handle_melee_attack_input(node, 'lite')
 			node.StateManager.state_machine(node, node.states.ATTACK)
 		
 	elif(Input.is_action_just_pressed("grab") and node.state != node.states.GRAB):

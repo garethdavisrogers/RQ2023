@@ -6,7 +6,7 @@ onready var combo_timer = $ComboTimer
 onready var overlay = $Sprite/Overlay
 
 func _ready():
-	combo_timer.wait_time = 0.3
+	combo_timer.wait_time = 0.35
 	combo_timer.one_shot = true
 	self.add_to_group('player')
 	health = 500
@@ -26,6 +26,9 @@ func _physics_process(_delta):
 			StateManager.PhysicsLoops.check_run_physics_loop(SELF)
 			if(state != states.STAGGER and state != states.KNOCKDOWN):
 				knockdir = null
+				var areas = hitbox.get_overlapping_areas()
+				if(areas.size() > 0):
+					StateManager.HitBoxManager.hitbox_loop(SELF, areas[0])
 				StateManager.ControlsManager.controls_loop(SELF)
 				if(state != states.CLINCHED):
 					pummeled = false
@@ -48,10 +51,10 @@ func _physics_process(_delta):
 func _on_HitCollider_area_entered(area):
 	if(anim.current_animation == 'grab'):
 		var node_parent = StateManager.get_parent_node(area)
-		if(node_parent.state == states.CLINCHED and node_parent.is_in_group('enemy')):
+		if(node_parent.is_in_group('enemy')):
+			StateManager.anim_switch(SELF, 'clinch')
 			clinched_opponent = node_parent
 			clinch_timer.start()
-			StateManager.anim_switch(SELF, 'clinch')
 	
 func _on_ComboTimer_timeout():
 	StateManager.TimerManager.combo(SELF)

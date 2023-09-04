@@ -21,7 +21,6 @@ func slip(node):
 	node.odd = false
 
 func combo(node):
-	node.can_follow_up = true
 	if(node.dashing):
 		node.dashing = false
 		node.combo_timer.start()
@@ -31,3 +30,4 @@ func combo(node):
 		node.StateManager.state_machine(node, node.states.IDLE)
 	elif(node.state == node.states.GRAB and node.clinched_opponent):
 		node.StateManager.anim_switch(node, 'clinch')
+	node.can_follow_up = true

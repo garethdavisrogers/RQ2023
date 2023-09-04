@@ -7,19 +7,19 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 28.0
-height = 40.0
+height = 55.0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 15.0
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 35, 12 )
+extents = Vector2( 25, 35 )
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 700.0
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 15, 10 )
+extents = Vector2( 15, 20 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 20, 22 )
@@ -957,7 +957,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=16]
 resource_name = "headbutt"
-length = 0.4
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -989,10 +989,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true, false, true ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:position")
@@ -1016,7 +1016,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 10, 10 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("BodyCollider:position")
@@ -1433,7 +1433,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 5, 0 ) ]
+"values": [ Vector2( 10, 10 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("BodyCollider:position")
@@ -1617,7 +1617,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 5, 5 ) ]
+"values": [ Vector2( 10, 10 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Sprite/HitCollider/CollisionShape2D:shape:radius")
@@ -1777,7 +1777,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 5, 0 ) ]
+"values": [ Vector2( 10, 10 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Sprite/HitCollider/CollisionShape2D:shape:radius")
@@ -1853,7 +1853,7 @@ tracks/11/keys = {
 }
 
 [sub_resource type="Animation" id=22]
-length = 0.6
+length = 0.5
 step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -1974,6 +1974,18 @@ tracks/9/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 5, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Sprite/HitBox/CollisionShape2D:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 10, 10 ) ]
 }
 
 [sub_resource type="Animation" id=23]
@@ -2557,8 +2569,7 @@ tracks/14/keys = {
 }
 
 [sub_resource type="Animation" id=28]
-length = 0.35
-step = 0.35
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -2669,8 +2680,7 @@ tracks/8/keys = {
 }
 
 [sub_resource type="Animation" id=29]
-length = 0.35
-step = 0.35
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -2793,8 +2803,7 @@ tracks/9/keys = {
 }
 
 [sub_resource type="Animation" id=30]
-length = 0.35
-step = 0.4
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -2814,10 +2823,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:position")
@@ -2905,8 +2914,7 @@ tracks/8/keys = {
 }
 
 [sub_resource type="Animation" id=31]
-length = 0.35
-step = 0.4
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -2926,10 +2934,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite/HitCollider/CollisionShape2D:disabled")
@@ -3029,7 +3037,8 @@ tracks/9/keys = {
 }
 
 [sub_resource type="Animation" id=32]
-length = 0.4
+length = 0.6
+step = 0.35
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -3037,7 +3046,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 1, 2 ]
@@ -3061,10 +3070,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true, false, true ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:position")
@@ -3088,7 +3097,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 10, 15 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("BodyCollider:position")
@@ -3193,10 +3202,10 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 0.1 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 20, 45 ), Vector2( 20, 75 ) ]
+"values": [ Vector2( 20, 45 ), Vector2( 20, 70 ) ]
 }
 tracks/14/type = "value"
 tracks/14/path = NodePath("Sprite/HitCollider/CollisionShape2D:shape:radius")
@@ -3442,7 +3451,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 8, -10 ) ]
+"values": [ Vector2( 8, 5 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Sprite/CounterBubble/CollisionShape2D:position")
@@ -3588,30 +3597,33 @@ position = Vector2( 0, -76 )
 z_index = 2
 texture = ExtResource( 3 )
 hframes = 73
-frame = 7
+frame = 19
 
 [node name="HitBox" parent="Sprite" index="0"]
 collision_layer = 2048
 collision_mask = 4096
 
 [node name="CollisionShape2D" parent="Sprite/HitBox" index="0"]
-position = Vector2( 5, 0 )
+position = Vector2( 18, 10 )
 shape = SubResource( 1 )
+disabled = true
 
 [node name="HitCollider" parent="Sprite" index="1"]
 collision_layer = 8192
 
 [node name="CollisionShape2D" parent="Sprite/HitCollider" index="0"]
-position = Vector2( 55, 16 )
+position = Vector2( 60, 30 )
 shape = SubResource( 2 )
+disabled = true
 
 [node name="CounterBubble" parent="Sprite" index="2"]
 collision_layer = 32768
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="Sprite/CounterBubble" index="0"]
-position = Vector2( 40, 35 )
+position = Vector2( 45, 50 )
 shape = SubResource( 3 )
+disabled = true
 
 [node name="DetectRadius" parent="Sprite" index="3"]
 collision_layer = 65536
@@ -3639,14 +3651,15 @@ position = Vector2( 20, -40 )
 shape = SubResource( 6 )
 
 [node name="BodyCollider" parent="." index="1"]
-position = Vector2( 4, -20 )
+position = Vector2( 8, -25 )
 shape = SubResource( 7 )
 
 [node name="DamageNumbers" parent="." index="2"]
+visible = true
 position = Vector2( 45, -100 )
 z_index = 3
 hframes = 5
-frame = 3
+frame = 2
 
 [node name="anim" parent="." index="3"]
 anims/block = SubResource( 8 )
@@ -3678,6 +3691,6 @@ anims/thrown = SubResource( 33 )
 anims/walk = SubResource( 34 )
 
 [node name="Shadow" parent="." index="4"]
-position = Vector2( 5, 0 )
+position = Vector2( 10, 0 )
 scale = Vector2( 2.5, 2 )
 texture = ExtResource( 4 )

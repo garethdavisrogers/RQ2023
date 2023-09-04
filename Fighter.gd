@@ -37,7 +37,6 @@ onready var blast_spawn = $Sprite/BlastSpawn
 onready var anim = $anim
 onready var slip_timer = $SlipTimer
 onready var hitbox = $Sprite/HitBox
-onready var hitbox_collision = $Sprite/HitBox/CollisionShape2D
 onready var hit_collider = $Sprite/HitCollider/CollisionShape2D
 onready var counter_bubble = $Sprite/CounterBubble
 onready var body_collider = $BodyCollider
@@ -53,9 +52,6 @@ var attack_index = 1
 
 func _ready():
 	StateManager.init_node(SELF)
-
-func _on_HitBox_area_entered(area):
-	StateManager.HitBoxManager.hitbox_loop(SELF, area)
 
 func _on_SlipTimer_timeout():
 	StateManager.TimerManager.slip(SELF)

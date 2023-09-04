@@ -16,4 +16,4 @@ centered = false
 position = Vector2( 294.32, 369.481 )
 
 [node name="KraxEnforcer" parent="Sprite/YSort" instance=ExtResource( 3 )]
-position = Vector2( 470.777, 392.733 )
+position = Vector2( 502.847, 360.593 )

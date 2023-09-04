@@ -5,9 +5,9 @@ func hitbox_loop(node, area):
 	
 	if(grabbed):
 		if(node.state != node.states.CLINCHED):
+			node.StateManager.anim_switch(node, 'clinched')
 			node.StateManager.state_machine(node, node.states.CLINCHED)
 			node.global_position = opponent.clinch_point.global_position
-			node.StateManager.anim_switch(node, 'clinched')
 		elif(not node.pummeled):
 			node.pummeled = true
 			node.slip_timer.start()
@@ -35,5 +35,7 @@ func hitbox_loop(node, area):
 				if(node.state == node.states.GRAB):
 					node.StateManager.release_opponent(node)
 				node.StateManager.state_machine(node, node.states.STAGGER)
+				node.odd = false
+				node.even = false
 				node.StateManager.anim_switch(node, str('stagger', enemy_attack_index))
 				node.StateManager.damage_loop(node)

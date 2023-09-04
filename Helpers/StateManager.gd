@@ -98,7 +98,7 @@ func release_opponent(node):
 		anim_switch(node, 'release')
 		node.clinched_opponent = null
 
-func increment_enemy_attack_index(node,attack_type):
+func increment_enemy_attack_index(node, attack_type):
 	if(node.lite_index == 4 or node.heavy_index == 3):
 		node.cooling_down = true
 		state_machine(node, states.SEEK)

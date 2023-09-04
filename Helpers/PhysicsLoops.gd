@@ -1,11 +1,12 @@
 func movement_loop(node):
 	var motion = Vector2()
 	if(node.knockdir):
+		node.speed = 0
 		if(node.state == node.states.KNOCKDOWN):
-			motion.x = node.knockdir.x * 300
+			motion.x = node.knockdir.x * 400
 		else:
-			motion.x = node.knockdir.x * 30
-		motion.y = node.knockdir.y * 2
+			motion.x = node.knockdir.x * 60
+			motion.y = node.knockdir.y * 10
 	else:
 		motion.x = node.last_direction_x * node.speed
 		motion.y = node.movedir.y * 30

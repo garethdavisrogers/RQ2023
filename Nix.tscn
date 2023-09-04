@@ -6,8 +6,8 @@
 [ext_resource path="res://assets/shadow.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 12.0
-height = 30.0
+radius = 15.0
+height = 45.0
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -2055,7 +2055,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( 30, -10 ) ]
+"values": [ Vector2( 35, -10 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite/HitBox/CollisionShape2D:position")
@@ -2076,10 +2076,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -2, -38 ), Vector2( 2, -37 ) ]
+"values": [ Vector2( 2, -37 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Sprite/HitBox/CollisionShape2D:disabled")
@@ -2167,7 +2167,7 @@ tracks/11/keys = {
 }
 
 [sub_resource type="Animation" id=19]
-length = 0.6
+length = 0.5
 step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -3393,7 +3393,7 @@ tracks/12/keys = {
 }
 
 [sub_resource type="Animation" id=26]
-length = 0.35
+length = 0.3
 step = 0.35
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -3541,7 +3541,7 @@ tracks/11/keys = {
 }
 
 [sub_resource type="Animation" id=27]
-length = 0.35
+length = 0.3
 step = 0.35
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -3677,7 +3677,7 @@ tracks/10/keys = {
 }
 
 [sub_resource type="Animation" id=28]
-length = 0.35
+length = 0.3
 step = 0.35
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -3813,7 +3813,7 @@ tracks/10/keys = {
 }
 
 [sub_resource type="Animation" id=29]
-length = 0.35
+length = 0.3
 step = 0.35
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -4421,17 +4421,17 @@ collision_mask = 32779
 script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2( 0, -46 )
+position = Vector2( 2, -37 )
 z_index = 2
 texture = ExtResource( 2 )
 hframes = 64
-frame = 12
+frame = 17
 
 [node name="HitBox" parent="Sprite" index="0"]
 collision_mask = 8192
 
 [node name="CollisionShape2D" parent="Sprite/HitBox" index="0"]
-position = Vector2( -8, -10 )
+position = Vector2( -8, 20 )
 shape = SubResource( 1 )
 
 [node name="HitCollider" parent="Sprite" index="1"]
@@ -4439,9 +4439,8 @@ collision_layer = 4096
 collision_mask = 8192
 
 [node name="CollisionShape2D" parent="Sprite/HitCollider" index="0"]
-position = Vector2( 35, -5 )
+position = Vector2( 35, -10 )
 shape = SubResource( 2 )
-disabled = true
 
 [node name="CounterBubble" parent="Sprite" index="2"]
 collision_layer = 16384
@@ -4506,7 +4505,7 @@ anims/throw = SubResource( 31 )
 anims/walk = SubResource( 32 )
 
 [node name="Shadow" parent="." index="4"]
-position = Vector2( -5, 0 )
+position = Vector2( -3, -5 )
 texture = ExtResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]

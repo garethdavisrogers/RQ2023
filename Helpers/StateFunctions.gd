@@ -2,7 +2,7 @@ func state_dead(node):
 	node.StateManager.anim_switch(node, str('death', node.death_version))
 
 func state_attack(node):
-	node.StateManager.decelerate(node, 10)
+	node.StateManager.decelerate(node, 20)
 
 func state_recover(node):
 	node.StateManager.anim_switch(node, 'recover')

@@ -21,8 +21,9 @@ func animation_finished(node, anim_name):
 		node.cooling_down = false
 	elif(anim_name == 'release' or anim_name == 'alucarddodge'):
 		node.StateManager.state_machine(node, node.states.IDLE)
-	elif(anim_name == 'grab'):
+	elif(anim_name == 'grab' and not node.clinched_opponent):
 		node.StateManager.state_machine(node, node.states.IDLE)
+		node.StateManager.release_opponent(node)
 	elif(anim_name == 'released'):
 		if(node.is_in_group('player')):
 			node.StateManager.state_machine(node, node.states.IDLE)
